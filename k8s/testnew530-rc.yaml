@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: testnew530
+  namespace: com-att-ocnp-mgmt
+spec:
+  replicas: 1
+  selector:
+    app: testnew530
+  template:
+    metadata:
+      labels:
+        app: testnew530
+    spec:
+      serviceAccount: YOUR
+      containers:
+      - name: testnew530
+        image: ${docker-registry}/${docker-namespace}/testnew530:latest
+        imagePullPolicy: Always
+        ports:
+         - containerPort: 8080
